@@ -1,0 +1,32 @@
+<html>
+<head>
+  <title>Emails Success</title>
+  <style>
+    .green {
+        background-color: green;
+        border: 2px solid black;
+        font-size: 1.3em;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="green">
+    The email you entered ({{all_emails[(all_emails|length)-1]['email']}}) is a VALID email address! Thank You!
+  </div>
+  <h3>Email Addresses Entered:</h3>
+  <table>
+    <tr>
+      <th>Email</th>
+      <th>Date Entered</th>
+    </tr>
+    {% for email in all_emails: %}
+    <tr>
+      <td>{{ email['email'] }}</td>
+      <td>{{ email['time'] }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>

@@ -1,28 +1,26 @@
 <html>
 <head>
-  <title>Full Friends</title>
+  <title>Emails</title>
+  <style>
+    .red {
+        background-color: red;
+        border: 2px solid black;
+        font-size: 1.3em;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-    <h1>Friends:</h1>
-    <table>
-      <tr>
-        <th>Name</th>
-        <th>Age</th>
-        <th>Friends Since</th>
-      </tr>
-      {% for friend in all_friends: %}
-      <tr>
-        <td>{{ friend['name'] }}</td>
-        <td>{{ friend['age'] }}</td>
-        <td>{{ friend['time'] }}</td>
-      </tr>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="red">{{message}}</div>
       {% endfor %}
-    </table>
-  <hr>
-  <h2>Add a Friend:</h2>
-  <form action='/friends' method='POST'>
-    <label for="name">Name:<input type="text" name="name" id="name"></label>
-    <label for="age">Age:<input type="text" name="age" id="age"></label>
+    {% endif %}
+  {% endwith %}
+  <form action='/emails' method='POST'>
+    <label for="email">Email:<input type="text" name="email" id="email"></label>
     <input type="submit" value="Submit">
   </form>
 </body>
